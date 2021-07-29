@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<style>
+input[type=text], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 20%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+<div>
+<form action="register" method="post">
+    
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+  
+
+    <label for="userName"><b>UserName</b></label><br>
+    <input type="text" placeholder="Enter UserName" name="userName" id="userName"><br>
+    
+     <label for="gender"><b>Gender</b></label><br>
+    <input type="text" placeholder="Enter gender" name="gender" id="gender"><br>
+    
+     <label for="phoneNumber"><b>Phone Number</b></label><br>
+    <input type="text" placeholder="Enter Phone number" name="phoneNumber" id="phoneNumber"><br>
+    
+     <label for="email"><b>Email</b></label><br>
+    <input type="text" placeholder="Enter email" name="email" id="email"><br>
+
+    <label for="psw"><b>Password</b></label><br>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw"><br>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label><br>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat"><br>
+  
+
+    <input type="submit" value = "Login"><br>
+    
+    <a href="login.html">Already have account click here to login</a>
+    </form>
+  </div>
+  
+
+
+
+</body>
+</html>
