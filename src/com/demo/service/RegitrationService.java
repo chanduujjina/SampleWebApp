@@ -5,12 +5,14 @@ import java.sql.SQLException;
 import com.demo.dao.RegistrationDao;
 import com.demo.dao.RegistrationDaoImpl;
 import com.demo.entity.UserInfo;
+import com.demo.exception.DBConnectionException;
+import com.demo.exception.UserDetailedException;
 
 public class RegitrationService {
 	
 	RegistrationDao dao = new RegistrationDaoImpl();
 	
-	public void registerUser(UserInfo info) throws SQLException, ClassNotFoundException {
+	public void registerUser(UserInfo info) throws UserDetailedException,DBConnectionException {
 		dao.saveUser(info);
 	}
 	

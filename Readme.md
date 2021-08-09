@@ -14,3 +14,6 @@ CREATE TABLE UserDetail (
 	PRIMARY KEY (UserId)
  );
  
+ 
+ ALTER TABLE `UserDetail` ADD UNIQUE `unique_index`(`UserName`, `PhoneNumber`, `Email`);
+ 

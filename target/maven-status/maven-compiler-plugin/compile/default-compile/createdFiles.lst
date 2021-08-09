@@ -1,0 +1,7 @@
+com\demo\controller\LoginController.class
+com\demo\dao\RegistrationDao.class
+com\demo\entity\UserInfo.class
+com\demo\utility\DBUtility.class
+com\demo\controller\RegisterController.class
+com\demo\dao\RegistrationDaoImpl.class
+com\demo\service\RegitrationService.class

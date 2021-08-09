@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.demo.entity.UserInfo;
+import com.demo.exception.DBConnectionException;
+import com.demo.exception.UserDetailedException;
 import com.demo.utility.DBUtility;
 
 public class RegistrationDaoImpl implements RegistrationDao{
@@ -13,12 +16,15 @@ public class RegistrationDaoImpl implements RegistrationDao{
 
 
 	@Override
-	public void saveUser(UserInfo userInfo) throws SQLException, ClassNotFoundException {
-		Connection conn =DBUtility.getConnection();
+	public void saveUser(UserInfo userInfo) throws UserDetailedException, DBConnectionException   {
+		Connection conn = null;
+		PreparedStatement statement = null;
+		try {
+		 conn =DBUtility.getConnection();
 		
 		String sql = "insert into UserDetail (UserName,Password,Gender,PhoneNumber,email) values(?,?,?,?,?)";
 		
-		PreparedStatement statement = conn.prepareStatement(sql);
+		 statement = conn.prepareStatement(sql);
 		
 		statement.setString(1, userInfo.getUserName());
 		statement.setString(2, userInfo.getPassword());
@@ -26,6 +32,15 @@ public class RegistrationDaoImpl implements RegistrationDao{
 		statement.setString(4, userInfo.getPhoneNumber());
 		statement.setString(5, userInfo.getEmail());
 		statement.execute();
+		}catch(ClassNotFoundException cnfex) {
+			throw new DBConnectionException("error in connecting in db", cnfex);
+		}
+		catch(SQLException ex) {
+			if(ex instanceof SQLIntegrityConstraintViolationException) {
+				throw new UserDetailedException("Account already created with given details you can login directly or you can change userName", ex);
+			}
+			throw new UserDetailedException("error in sql statement", ex);
+		}
 		
 	}
 
